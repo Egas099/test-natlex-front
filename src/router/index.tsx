@@ -1,18 +1,32 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom';
+import { Container } from '@mui/material';
+import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
+import Header from '../components/Header';
 import Settings from '../pages/Settings';
 import ViewMode from '../pages/ViewMode';
 
-export const routes = createBrowserRouter([
+export const router = createBrowserRouter([
     {
-        path: '/view_mode',
-        element: <ViewMode/>
-    },
-    {
-        path: '/settings',
-        element: <Settings/>
-    },
-    {
-        path: '*',
-        element: <Navigate to="/view_mode" replace />
+        element: (
+            <>
+                <Header />
+                <Container maxWidth="lg" sx={{ mt: '1rem' }}>
+                    <Outlet />
+                </Container>
+            </>
+        ),
+        children: [
+            {
+                path: '/view_mode',
+                element: <ViewMode />
+            },
+            {
+                path: '/settings',
+                element: <Settings />
+            },
+            {
+                path: '*',
+                element: <Navigate to="/view_mode" replace />
+            }
+        ]
     }
 ]);

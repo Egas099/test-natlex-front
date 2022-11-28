@@ -1,5 +1,7 @@
+import ChartList from '../components/ChartList';
+
 const ViewMode = () => {
-    return <div>ViewMode</div>;
+    return <ChartList />;
 };
 
 export default ViewMode;

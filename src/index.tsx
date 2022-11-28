@@ -2,13 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './css/index.css';
 import { RouterProvider } from 'react-router-dom';
-import { routes } from './router';
+import { router } from './router';
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
-    <React.StrictMode>
-        <RouterProvider router={routes} />
-    </React.StrictMode>
+    // <React.StrictMode>
+    <Provider store={store}>
+        <RouterProvider router={router} />
+    </Provider>
+    // </React.StrictMode>
 );

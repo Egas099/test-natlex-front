@@ -1,0 +1,9 @@
+.link {
+    color: rgba(255, 255, 255, 1);
+    text-decoration: none;
+    padding: 0 10px;
+}
+
+.activeLink {
+    color:  #70EABF;
+}
