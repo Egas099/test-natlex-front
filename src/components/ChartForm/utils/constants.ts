@@ -1,4 +1,4 @@
-import { ChartType } from '../../../store/redusers/types';
+import { ChartType } from '../../../store/redusers/charts/types';
 
 export const DEFAULT_CONFIG = {
     title: 'New chart',

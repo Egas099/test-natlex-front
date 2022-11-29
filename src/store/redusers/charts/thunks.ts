@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ChartService } from '../../api/chartService';
+import { ChartService } from '../../../api/chartService';
 import { CreateChartForm, UpdateChartForm } from './types';
 
 export const createChartThunk = createAsyncThunk(

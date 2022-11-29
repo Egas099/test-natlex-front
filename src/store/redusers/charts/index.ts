@@ -32,5 +32,4 @@ const chartSlice = createSlice({
     }
 });
 
-export const {} = chartSlice.actions;
 export const chartReduser = chartSlice.reducer;

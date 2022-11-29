@@ -1,4 +1,4 @@
-import { RootState } from '..';
+import { RootState } from '../..';
 
 export const getChartsOptionsWithId = (state: RootState) => {
     return state.chart.map(({ id, config, dataSet }) => ({

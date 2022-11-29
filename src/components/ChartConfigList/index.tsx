@@ -2,13 +2,16 @@ import { Divider, List } from '@mui/material';
 import { useCallback, useState } from 'react';
 import { useTypedDispatch } from '../../hooks/useTypedDispatch';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { getChartsConfigWithId } from '../../store/redusers/selectors';
+import { getChartsConfigWithId } from '../../store/redusers/charts/selectors';
 import {
     createChartThunk,
     deleteChartThunk,
     updateChartThunk
-} from '../../store/redusers/thunks';
-import { CreateChartForm, UpdateChartForm } from '../../store/redusers/types';
+} from '../../store/redusers/charts/thunks';
+import {
+    CreateChartForm,
+    UpdateChartForm
+} from '../../store/redusers/charts/types';
 import ChartForm from '../ChartForm';
 import ConfirmDialog from '../ConfirmDialog';
 import { createSetup, FORM_ID, updateSetup } from './utils/constants';

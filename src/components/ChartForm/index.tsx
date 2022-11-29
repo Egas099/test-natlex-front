@@ -5,7 +5,7 @@ import {
     ChartConfig,
     ChartType,
     CreateChartForm
-} from '../../store/redusers/types';
+} from '../../store/redusers/charts/types';
 import styles from './index.module.css';
 import { DEFAULT_CONFIG } from './utils/constants';
 

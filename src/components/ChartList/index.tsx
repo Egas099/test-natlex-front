@@ -2,8 +2,8 @@ import { Box, Grid } from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
 import { useTypedDispatch } from '../../hooks/useTypedDispatch';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { getChartsOptionsWithId } from '../../store/redusers/selectors';
-import { fetchChartsThunk } from '../../store/redusers/thunks';
+import { getChartsOptionsWithId } from '../../store/redusers/charts/selectors';
+import { fetchChartsThunk } from '../../store/redusers/charts/thunks';
 import ChartComponent from '../ChartComponent';
 import DateRangePicker from '../DateRangePicker';
 
