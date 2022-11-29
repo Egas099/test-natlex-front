@@ -1,49 +1,36 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
+import { Chart } from './types';
 import {
-    Chart,
-    CreateChartForm,
-    ChartId,
-    UpdateChartForm,
-    ChartType
-} from './types';
-import { createMockChart } from './utils';
+    createChartThunk,
+    deleteChartThunk,
+    fetchChartsThunk,
+    updateChartThunk
+} from './thunks';
 
-const initialState: Chart[] = [
-    createMockChart({
-        title: 'Profit',
-        type: ChartType.Line,
-        color: '#66fa7d'
-    }),
-    createMockChart({ title: 'Costs', type: ChartType.Line, color: '#ff6b89' }),
-    createMockChart({
-        title: 'Other',
-        type: ChartType.Area,
-        color: '#69a0ff'
-    })
-];
+const initialState: Chart[] = [];
 
 const chartSlice = createSlice({
     name: 'chart',
     initialState,
-    reducers: {
-        createChart(state, action: PayloadAction<CreateChartForm>) {
-            const newChartConfig = createMockChart(action.payload);
-            return [...state, newChartConfig];
-        },
-        deleteChart(state, action: PayloadAction<ChartId>) {
-            return state.filter(({ id }) => id !== action.payload);
-        },
-        updateChart(state, action: PayloadAction<UpdateChartForm>) {
-            console.log(action.payload.id);
+    reducers: {},
+    extraReducers: builder => {
+        builder.addCase(createChartThunk.fulfilled, (state, action) => {
+            return [...state, action.payload];
+        });
+        builder.addCase(fetchChartsThunk.fulfilled, (state, action) => {
+            return action.payload;
+        });
+        builder.addCase(updateChartThunk.fulfilled, (state, action) => {
             const chart = state.find(chart => chart.id === action.payload.id);
-            console.log(chart);
             if (chart) {
                 chart.config = action.payload;
             }
-        }
+        });
+        builder.addCase(deleteChartThunk.fulfilled, (state, action) => {
+            return state.filter(({ id }) => id !== action.payload);
+        });
     }
 });
 
-export const { createChart, updateChart, deleteChart } = chartSlice.actions;
+export const {} = chartSlice.actions;
 export const chartReduser = chartSlice.reducer;

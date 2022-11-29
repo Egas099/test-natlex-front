@@ -1,7 +1,9 @@
-import { Box, Divider, Grid } from '@mui/material';
-import { useCallback, useState } from 'react';
+import { Box, Grid } from '@mui/material';
+import { useCallback, useEffect, useState } from 'react';
+import { useTypedDispatch } from '../../hooks/useTypedDispatch';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { getChartsOptionsWithId } from '../../store/redusers/selectors';
+import { fetchChartsThunk } from '../../store/redusers/thunks';
 import ChartComponent from '../ChartComponent';
 import DateRangePicker from '../DateRangePicker';
 
@@ -11,6 +13,11 @@ const DEFAULT_RANGE = {
 };
 
 const ChartList = () => {
+    const dispatch = useTypedDispatch();
+    useEffect(() => {
+        dispatch(fetchChartsThunk());
+    }, []);
+
     const charts = useTypedSelector(getChartsOptionsWithId);
     const [dateRange, setDateRange] = useState(DEFAULT_RANGE);
 
@@ -47,7 +54,13 @@ const ChartList = () => {
                     </Grid>
                 </>
             ) : (
-                <>Chart list empty</>
+                <Box
+                    sx={{
+                        textAlign: 'center'
+                    }}
+                >
+                    Chart list empty
+                </Box>
             )}
         </>
     );

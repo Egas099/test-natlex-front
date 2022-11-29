@@ -1,18 +1,14 @@
 import { Divider, List } from '@mui/material';
 import { useCallback, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useTypedDispatch } from '../../hooks/useTypedDispatch';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import {
-    createChart,
-    deleteChart,
-    updateChart
-} from '../../store/redusers/chart';
 import { getChartsConfigWithId } from '../../store/redusers/selectors';
 import {
-    ChartConfig,
-    CreateChartForm,
-    UpdateChartForm
-} from '../../store/redusers/types';
+    createChartThunk,
+    deleteChartThunk,
+    updateChartThunk
+} from '../../store/redusers/thunks';
+import { CreateChartForm, UpdateChartForm } from '../../store/redusers/types';
 import ChartForm from '../ChartForm';
 import ConfirmDialog from '../ConfirmDialog';
 import { createSetup, FORM_ID, updateSetup } from './utils/constants';
@@ -20,7 +16,7 @@ import ConfigListItem from './views/ConfigListItem';
 import ListHeader from './views/ListHeader';
 
 const ChartConfigList = () => {
-    const dispatch = useDispatch();
+    const dispatch = useTypedDispatch();
     const charts = useTypedSelector(getChartsConfigWithId);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [presetFormData, setPresetFormData] = useState<
@@ -36,7 +32,7 @@ const ChartConfigList = () => {
         showDialog();
     }, []);
     const handleCreate = useCallback(
-        (chartForm: CreateChartForm) => dispatch(createChart(chartForm)),
+        (chartForm: CreateChartForm) => dispatch(createChartThunk(chartForm)),
         [dispatch]
     );
     const onUpdateClick = useCallback(
@@ -50,11 +46,11 @@ const ChartConfigList = () => {
     );
     const handleUpdate = useCallback(
         (chartForm: CreateChartForm) =>
-            dispatch(updateChart({ id: updatedId, ...chartForm })),
+            dispatch(updateChartThunk({ id: updatedId, ...chartForm })),
         [dispatch, updatedId]
     );
     const onDeleteClick = useCallback(
-        (id: number) => () => dispatch(deleteChart(id)),
+        (id: number) => () => dispatch(deleteChartThunk(id)),
         [dispatch]
     );
 
