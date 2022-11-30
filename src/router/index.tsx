@@ -9,7 +9,7 @@ export const router = createBrowserRouter([
         element: (
             <>
                 <Header />
-                <Container maxWidth="lg" sx={{ mt: '1rem' }}>
+                <Container maxWidth="lg" sx={{ mt: '1rem', mb: '1rem' }}>
                     <Outlet />
                 </Container>
             </>

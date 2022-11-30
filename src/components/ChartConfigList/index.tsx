@@ -1,14 +1,16 @@
 import { Divider, List } from '@mui/material';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useTypedDispatch } from '../../hooks/useTypedDispatch';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { getChartsConfigWithId } from '../../store/redusers/charts/selectors';
 import {
     createChartThunk,
     deleteChartThunk,
+    fetchChartsThunk,
     updateChartThunk
 } from '../../store/redusers/charts/thunks';
 import {
+    ChartStatus,
     CreateChartForm,
     UpdateChartForm
 } from '../../store/redusers/charts/types';
@@ -17,10 +19,11 @@ import ConfirmDialog from '../ConfirmDialog';
 import { createSetup, FORM_ID, updateSetup } from './utils/constants';
 import ConfigListItem from './views/ConfigListItem';
 import ListHeader from './views/ListHeader';
+import { LoadingListItem } from './views/LoadingListItem';
 
 const ChartConfigList = () => {
     const dispatch = useTypedDispatch();
-    const charts = useTypedSelector(getChartsConfigWithId);
+    const { loading, charts } = useTypedSelector(getChartsConfigWithId);
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [presetFormData, setPresetFormData] = useState<
         CreateChartForm | undefined
@@ -57,19 +60,27 @@ const ChartConfigList = () => {
         [dispatch]
     );
 
+    useEffect(() => {
+        if (loading === ChartStatus.idle) dispatch(fetchChartsThunk());
+    }, []);
+
     return (
         <>
             <List>
                 <ListHeader onCreate={onCreateClick} key="list_header" />
                 <Divider />
-                {charts.map(config => (
-                    <ConfigListItem
-                        key={config.id}
-                        {...config}
-                        onUpdate={onUpdateClick(config)}
-                        onDelete={onDeleteClick(config.id)}
-                    />
-                ))}
+                {charts.length ? (
+                    charts.map(config => (
+                        <ConfigListItem
+                            key={config.id}
+                            {...config}
+                            onUpdate={onUpdateClick(config)}
+                            onDelete={onDeleteClick(config.id)}
+                        />
+                    ))
+                ) : (
+                    <LoadingListItem />
+                )}
             </List>
             <ConfirmDialog
                 isOpen={isDialogOpen}

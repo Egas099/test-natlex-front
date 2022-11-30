@@ -1,7 +1,8 @@
-import { Box, IconButton, ListItem, ListItemText } from '@mui/material';
+import { IconButton, ListItem, ListItemText } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { FC, memo } from 'react';
 import EditIcon from '@mui/icons-material/Edit';
+import styles from '../index.module.css';
 
 interface ChartConfig {
     id: number;
@@ -13,7 +14,6 @@ interface ChartConfig {
 }
 
 const ConfigListItem: FC<ChartConfig> = ({
-    id,
     color,
     title,
     type,
@@ -21,12 +21,17 @@ const ConfigListItem: FC<ChartConfig> = ({
     onUpdate
 }) => {
     return (
-        <ListItem>
-            <ListItemText primary={title} />
-            <Box sx={{ height: '10xp', p: '5px', background: color }}>
+        <ListItem sx={{ gap: '10px' }}>
+            <ListItemText primary={title} className={styles.titleColumn} />
+            <ListItemText
+                className={styles.colorColumn}
+                sx={{
+                    backgroundColor: color
+                }}
+            >
                 {color}
-            </Box>
-            <ListItemText primary={type} />
+            </ListItemText>
+            <ListItemText primary={type} className={styles.typeColumn} />
             <IconButton aria-label="edit" onClick={onUpdate}>
                 <EditIcon />
             </IconButton>

@@ -22,5 +22,11 @@ export const getChartsOptionsWithId = (state: RootState) => {
 };
 
 export const getChartsConfigWithId = (state: RootState) => {
-    return state.chart.entities.map(({ id, config }) => ({ id, ...config }));
+    return {
+        loading: state.chart.loading,
+        charts: state.chart.entities.map(({ id, config }) => ({
+            id,
+            ...config
+        }))
+    };
 };

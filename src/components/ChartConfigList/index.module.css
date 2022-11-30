@@ -1,0 +1,22 @@
+.titleColumn {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 50%;
+}
+.titleColumn > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.colorColumn {
+    width: 15%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+.typeColumn {
+    width: 15%;
+}
