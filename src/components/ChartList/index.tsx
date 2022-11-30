@@ -23,7 +23,7 @@ const ChartList = () => {
 
     useEffect(() => {
         if (loading === ChartStatus.idle) dispatch(fetchChartsThunk());
-    }, []);
+    }, [loading, dispatch]);
 
     if (loading === ChartStatus.pending || loading === ChartStatus.idle) {
         return <LoadingBox />;

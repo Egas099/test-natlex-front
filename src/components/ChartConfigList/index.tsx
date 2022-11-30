@@ -62,7 +62,7 @@ const ChartConfigList = () => {
 
     useEffect(() => {
         if (loading === ChartStatus.idle) dispatch(fetchChartsThunk());
-    }, []);
+    }, [loading, dispatch]);
 
     return (
         <>
