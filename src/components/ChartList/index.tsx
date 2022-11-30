@@ -1,48 +1,42 @@
-import { Box, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
 import { useTypedDispatch } from '../../hooks/useTypedDispatch';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { getChartsOptionsWithId } from '../../store/redusers/charts/selectors';
 import { fetchChartsThunk } from '../../store/redusers/charts/thunks';
+import { ChartStatus } from '../../store/redusers/charts/types';
 import ChartComponent from '../ChartComponent';
-import DateRangePicker from '../DateRangePicker';
-
-const DEFAULT_RANGE = {
-    min: 0,
-    max: Date.UTC(2020, 0, 0)
-};
+import { DEFAULT_RANGE } from './utils/constants';
+import { EmptyBox } from './views/EmptyBox';
+import Filter from './views/Filter';
+import { LoadingBox } from './views/LoadingBox';
 
 const ChartList = () => {
     const dispatch = useTypedDispatch();
-    useEffect(() => {
-        dispatch(fetchChartsThunk());
-    }, []);
-
-    const charts = useTypedSelector(getChartsOptionsWithId);
+    const { loading, charts } = useTypedSelector(getChartsOptionsWithId);
     const [dateRange, setDateRange] = useState(DEFAULT_RANGE);
 
     const handleFilterChanging = useCallback(
-        (min: number, max: number) => setDateRange({ min, max }),
+        (from: number, to: number) => setDateRange({ from, to }),
         []
     );
+
+    useEffect(() => {
+        if (loading === ChartStatus.idle) dispatch(fetchChartsThunk());
+    }, []);
+
+    if (loading === ChartStatus.pending || loading === ChartStatus.idle) {
+        return <LoadingBox />;
+    }
 
     return (
         <>
             {charts.length ? (
                 <>
-                    <Box
-                        sx={{
-                            background: 'white',
-                            p: '10px',
-                            marginBottom: '20px'
-                        }}
-                    >
-                        <DateRangePicker
-                            defaultFrom={DEFAULT_RANGE.min}
-                            defaultTo={DEFAULT_RANGE.max}
-                            onChange={handleFilterChanging}
-                        />
-                    </Box>
+                    <Filter
+                        defaultRange={DEFAULT_RANGE}
+                        onChange={handleFilterChanging}
+                    />
                     <Grid container spacing={3}>
                         {charts.map(chart => (
                             <ChartComponent
@@ -54,13 +48,7 @@ const ChartList = () => {
                     </Grid>
                 </>
             ) : (
-                <Box
-                    sx={{
-                        textAlign: 'center'
-                    }}
-                >
-                    Chart list empty
-                </Box>
+                <EmptyBox />
             )}
         </>
     );

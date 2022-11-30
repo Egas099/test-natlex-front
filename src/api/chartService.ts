@@ -21,7 +21,7 @@ function readCharts() {
                 }),
                 createMockChart({
                     title: 'Costs',
-                    type: ChartType.Line,
+                    type: ChartType.Spline,
                     color: '#ff6b89'
                 }),
                 createMockChart({

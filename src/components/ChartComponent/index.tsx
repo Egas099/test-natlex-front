@@ -2,18 +2,18 @@ import { Grid } from '@mui/material';
 import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
 import { FC, useMemo } from 'react';
-import { presetChartConfig } from './utils/constants';
+import { PRESET_CHART_CONFIG } from './utils/constants';
 
 interface Props {
     options: Highcharts.Options;
-    range: { min: number; max: number };
+    range: { from: number; to: number };
 }
 
 const ChartComponent: FC<Props> = ({ options, range }) => {
-    const preOptions = useMemo(() => {
-        const newOptions = Object.assign({}, presetChartConfig);
-        newOptions.xAxis.min = range.min;
-        newOptions.xAxis.max = range.max;
+    const presetOptions = useMemo(() => {
+        const newOptions = Object.assign({}, PRESET_CHART_CONFIG);
+        newOptions.xAxis.min = range.from;
+        newOptions.xAxis.max = range.to;
         return newOptions;
     }, [range]);
 
@@ -22,7 +22,7 @@ const ChartComponent: FC<Props> = ({ options, range }) => {
             <HighchartsReact
                 highcharts={Highcharts}
                 options={{
-                    ...preOptions,
+                    ...presetOptions,
                     ...options
                 }}
             />

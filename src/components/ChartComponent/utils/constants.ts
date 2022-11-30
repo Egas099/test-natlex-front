@@ -1,4 +1,4 @@
-export const presetChartConfig = {
+export const PRESET_CHART_CONFIG = {
     xAxis: {
         min: 0,
         type: 'datetime',

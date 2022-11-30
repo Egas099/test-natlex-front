@@ -10,21 +10,26 @@ export interface UpdateChartForm extends CreateChartForm {
 
 export interface ChartConfig extends CreateChartForm {}
 
+export interface Chart {
+    id: number;
+    dataSet: Point[];
+    config: ChartConfig;
+}
+
 export interface Point {
     date: number;
     value: number;
 }
 
-export interface Chart {
-    id: ChartId;
-    dataSet: Point[];
-    config: ChartConfig;
-}
-
-export type ChartId = number;
-
 export enum ChartType {
     Line = 'line',
     Spline = 'spline',
     Area = 'area'
+}
+
+export enum ChartStatus {
+    idle,
+    pending,
+    succeeded,
+    failed
 }
