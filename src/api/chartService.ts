@@ -15,7 +15,7 @@ function readCharts() {
         setTimeout(() => {
             resolve([
                 createMockChart({
-                    title: 'Profit Profit Profit Profit Profit Profit Profit Profit Profit Profit ',
+                    title: 'Profit',
                     type: ChartType.Line,
                     color: '#66fa7d'
                 }),
