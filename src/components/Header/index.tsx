@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography, Container } from '@mui/material';
+import { AppBar, Toolbar, Typography, Container, Box } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import styles from './index.module.css';
 const Header = () => {
@@ -6,9 +6,9 @@ const Header = () => {
         `${styles.link} ${isActive ? styles.activeLink : ''}`;
 
     return (
-        <AppBar position="static">
-            <Toolbar>
-                <Container maxWidth="lg">
+        <AppBar position="sticky">
+            <Toolbar id={styles.header}>
+                <Container maxWidth="lg" id={styles.navBar}>
                     <NavLink to="/view_mode" className={linkClasses}>
                         <Typography variant="h6" component="span">
                             View mode

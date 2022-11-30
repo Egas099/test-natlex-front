@@ -1,9 +1,15 @@
+#navBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
 .link {
-    color: rgba(255, 255, 255, 1);
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     padding: 0 10px;
 }
 
 .activeLink {
-    color:  #70EABF;
+    color: white;
 }
