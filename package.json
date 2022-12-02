@@ -2,6 +2,7 @@
     "name": "test-natlex-front",
     "version": "0.1.0",
     "private": true,
+    "homepage": "/test-natlex-front",
     "dependencies": {
         "@emotion/react": "^11.10.5",
         "@emotion/styled": "^11.10.5",
@@ -9,26 +10,23 @@
         "@mui/material": "^5.10.14",
         "@mui/x-date-pickers": "^5.0.9",
         "@reduxjs/toolkit": "^1.9.0",
-        "@testing-library/jest-dom": "^5.16.5",
-        "@testing-library/react": "^13.4.0",
-        "@testing-library/user-event": "^13.5.0",
         "dayjs": "^1.11.6",
         "highcharts": "^10.3.1",
         "highcharts-react-official": "^3.1.0",
-        "lodash": "^4.17.21",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-redux": "^8.0.5",
         "react-router-dom": "^6.4.3",
         "react-scripts": "5.0.1",
-        "typescript": "^4.9.3",
         "web-vitals": "^2.1.4"
     },
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
     },
     "eslintConfig": {
         "extends": [
@@ -49,10 +47,15 @@
         ]
     },
     "devDependencies": {
+        "@testing-library/jest-dom": "^5.16.5",
+        "@testing-library/react": "^13.4.0",
+        "@testing-library/user-event": "^13.5.0",
         "@types/jest": "^27.5.2",
         "@types/node": "^16.18.3",
         "@types/react": "^18.0.25",
         "@types/react-dom": "^18.0.9",
+        "gh-pages": "^4.0.0",
+        "typescript": "^4.9.3",
         "prettier": "2.7.1"
     }
 }
