@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/test-natlex-front/static/css/main.3b471544.css",
-    "main.js": "/test-natlex-front/static/js/main.1759d3bb.js",
+    "main.css": "/test-natlex-front/static/css/main.8993b119.css",
+    "main.js": "/test-natlex-front/static/js/main.d999a32a.js",
     "index.html": "/test-natlex-front/index.html",
-    "main.3b471544.css.map": "/test-natlex-front/static/css/main.3b471544.css.map",
-    "main.1759d3bb.js.map": "/test-natlex-front/static/js/main.1759d3bb.js.map"
+    "main.8993b119.css.map": "/test-natlex-front/static/css/main.8993b119.css.map",
+    "main.d999a32a.js.map": "/test-natlex-front/static/js/main.d999a32a.js.map"
   },
   "entrypoints": [
-    "static/css/main.3b471544.css",
-    "static/js/main.1759d3bb.js"
+    "static/css/main.8993b119.css",
+    "static/js/main.d999a32a.js"
   ]
 }
