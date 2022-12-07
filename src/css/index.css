@@ -17,3 +17,22 @@ code {
 .highcharts-credits {
     display: none;
 }
+
+:root {
+    --header-bar-height: 64px;
+    --page-top-margin: 1rem;
+    --page-bottom-margin: 1rem;
+}
+
+@media (max-width: 600px) {
+    :root {
+        --header-bar-height: 56px;
+    }
+}
+
+@media (max-width: 320px) {
+    :root {
+        --page-top-margin: 0;
+        --page-bottom-margin: 0;
+    }
+}

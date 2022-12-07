@@ -1,3 +1,14 @@
+#list {
+    box-sizing: border-box;
+    height: calc(
+        100vh - var(--header-bar-height) - var(--page-top-margin) -
+            var(--page-bottom-margin)
+    );
+    overflow: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
 .titleColumn {
     overflow: hidden;
     white-space: nowrap;

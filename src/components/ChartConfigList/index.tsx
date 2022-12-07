@@ -20,6 +20,7 @@ import { CREATE_SETUP, FORM_ID, UPDATE_SETUP } from './utils/constants';
 import ConfigListItem from './views/ConfigListItem';
 import ListHeader from './views/ListHeader';
 import { LoadingListItem } from './views/LoadingListItem';
+import styles from './index.module.css';
 
 const ChartConfigList = () => {
     const dispatch = useTypedDispatch();
@@ -59,16 +60,15 @@ const ChartConfigList = () => {
         (id: number) => () => dispatch(deleteChartThunk(id)),
         [dispatch]
     );
-    
+
     useEffect(() => {
         if (loading === ChartStatus.idle) dispatch(fetchChartsThunk());
     }, [loading, dispatch]);
 
     return (
         <>
-            <List>
+            <List id={styles.list}>
                 <ListHeader onCreate={onCreateClick} key="list_header" />
-                <Divider />
                 {charts.length ? (
                     charts.map(config => (
                         <ConfigListItem

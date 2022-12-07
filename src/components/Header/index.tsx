@@ -6,7 +6,7 @@ const Header = () => {
         `${styles.link} ${isActive ? styles.activeLink : ''}`;
 
     return (
-        <AppBar position="sticky">
+        <AppBar position="sticky" id={styles.header}>
             <Toolbar id={styles.header}>
                 <Container maxWidth="lg" id={styles.navBar}>
                     <NavLink to="/view_mode" className={linkClasses}>

@@ -1,8 +1,9 @@
 import {
-    ListItem,
+    Divider,
     ListItemButton,
     ListItemIcon,
-    ListItemText
+    ListItemText,
+    ListSubheader
 } from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { FC } from 'react';
@@ -13,14 +14,15 @@ interface Props {
 
 const ListHeader: FC<Props> = ({ onCreate }) => {
     return (
-        <ListItem disablePadding>
+        <ListSubheader>
             <ListItemButton onClick={onCreate}>
                 <ListItemIcon>
                     <AddCircleOutlineIcon />
                 </ListItemIcon>
                 <ListItemText primary="Add new chart" />
             </ListItemButton>
-        </ListItem>
+            <Divider />
+        </ListSubheader>
     );
 };
 

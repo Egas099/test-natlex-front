@@ -1,7 +1,6 @@
-import { Container } from '@mui/material';
-import { createBrowserRouter, Navigate, Outlet } from 'react-router-dom';
-import Header from '../components/Header';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { RootBoundary } from '../components/RootBoundary';
+import PageLayout from '../components/PageLayout';
 import Settings from '../pages/Settings';
 import ViewMode from '../pages/ViewMode';
 
@@ -11,14 +10,7 @@ export const router = createBrowserRouter(
     [
         {
             path: '/',
-            element: (
-                <>
-                    <Header />
-                    <Container maxWidth="lg" sx={{ mt: '1rem', mb: '1rem' }}>
-                        <Outlet />
-                    </Container>
-                </>
-            ),
+            element: <PageLayout />,
             children: [
                 {
                     path: 'view_mode',

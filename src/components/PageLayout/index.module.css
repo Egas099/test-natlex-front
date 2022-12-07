@@ -1,0 +1,7 @@
+#container {
+    margin-top: var(--page-top-margin);
+    margin-bottom: var(--page-bottom-margin);
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
