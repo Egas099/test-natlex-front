@@ -3,7 +3,7 @@ import {
     ChartType,
     CreateChartForm,
     UpdateChartForm
-} from '../store/redusers/charts/types';
+} from '../store/reducers/charts/types';
 import { createMockChart } from '../utils/chartCreator';
 
 function createChart(chartForm: CreateChartForm) {

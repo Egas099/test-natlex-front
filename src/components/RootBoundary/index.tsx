@@ -7,7 +7,7 @@ export function RootBoundary() {
     const error = useRouteError();
     const navigate = useNavigate();
 
-    useEffect(() => console.error(error), []);
+    useEffect(() => console.error(error), [error]);
     const goHome = useCallback(() => navigate('/'), [navigate]);
 
     return (

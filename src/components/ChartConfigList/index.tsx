@@ -2,21 +2,21 @@ import { Divider, List } from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
 import { useTypedDispatch } from '../../hooks/useTypedDispatch';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { getChartsConfigWithId } from '../../store/redusers/charts/selectors';
+import { getChartsConfigWithId } from '../../store/reducers/charts/selectors';
 import {
     createChartThunk,
     deleteChartThunk,
     fetchChartsThunk,
     updateChartThunk
-} from '../../store/redusers/charts/thunks';
+} from '../../store/reducers/charts/thunks';
 import {
     ChartStatus,
     CreateChartForm,
     UpdateChartForm
-} from '../../store/redusers/charts/types';
+} from '../../store/reducers/charts/types';
 import ChartForm from '../ChartForm';
 import ConfirmDialog from '../ConfirmDialog';
-import { createSetup, FORM_ID, updateSetup } from './utils/constants';
+import { CREATE_SETUP, FORM_ID, UPDATE_SETUP } from './utils/constants';
 import ConfigListItem from './views/ConfigListItem';
 import ListHeader from './views/ListHeader';
 import { LoadingListItem } from './views/LoadingListItem';
@@ -59,7 +59,7 @@ const ChartConfigList = () => {
         (id: number) => () => dispatch(deleteChartThunk(id)),
         [dispatch]
     );
-
+    
     useEffect(() => {
         if (loading === ChartStatus.idle) dispatch(fetchChartsThunk());
     }, [loading, dispatch]);
@@ -84,7 +84,7 @@ const ChartConfigList = () => {
             </List>
             <ConfirmDialog
                 isOpen={isDialogOpen}
-                {...(presetFormData ? updateSetup : createSetup)}
+                {...(presetFormData ? UPDATE_SETUP : CREATE_SETUP)}
                 onOk={hideDialog}
                 onCancel={hideDialog}
             >

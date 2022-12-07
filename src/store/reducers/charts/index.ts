@@ -1,16 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Chart, ChartStatus } from './types';
+import { ChartState, ChartStatus } from './types';
 import {
     createChartThunk,
     deleteChartThunk,
     fetchChartsThunk,
     updateChartThunk
 } from './thunks';
-
-interface ChartState {
-    entities: Chart[];
-    loading: ChartStatus;
-}
 
 const initialState: ChartState = {
     entities: [],
@@ -51,4 +46,4 @@ const chartSlice = createSlice({
     }
 });
 
-export const chartReduser = chartSlice.reducer;
+export const chartReducer = chartSlice.reducer;

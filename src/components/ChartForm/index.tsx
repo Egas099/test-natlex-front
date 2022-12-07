@@ -5,19 +5,14 @@ import {
     ChartConfig,
     ChartType,
     CreateChartForm
-} from '../../store/redusers/charts/types';
+} from '../../store/reducers/charts/types';
 import styles from './index.module.css';
-import { DEFAULT_CONFIG } from './utils/constants';
+import { DEFAULT_CONFIG, PRESET_INPUT_PROPS } from './utils/constants';
 
 type Props = {
     formId: string;
     onSubmit: (chartForm: CreateChartForm) => void;
     presetConfig?: ChartConfig;
-};
-
-const presetInputProps = {
-    fullWidth: true,
-    InputLabelProps: { shrink: true }
 };
 
 const ChartForm = ({
@@ -46,7 +41,7 @@ const ChartForm = ({
                 onChange={e => {
                     chartTitle.current = e.target.value;
                 }}
-                {...presetInputProps}
+                {...PRESET_INPUT_PROPS}
             />
             <TextField
                 select
@@ -55,7 +50,7 @@ const ChartForm = ({
                 onChange={e => {
                     chartType.current = e.target.value as ChartType;
                 }}
-                {...presetInputProps}
+                {...PRESET_INPUT_PROPS}
             >
                 {Object.values(ChartType).map(type => (
                     <MenuItem key={type} value={type}>
@@ -70,7 +65,7 @@ const ChartForm = ({
                 onChange={e => {
                     chartColor.current = e.target.value;
                 }}
-                {...presetInputProps}
+                {...PRESET_INPUT_PROPS}
             />
         </form>
     );

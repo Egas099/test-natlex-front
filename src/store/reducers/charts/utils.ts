@@ -1,7 +1,7 @@
 import { Chart, ChartType, CreateChartForm, Point } from './types';
 const ONE_DAY_MS = 1000 * 3600 * 24;
 
-const defautConfig = {
+const defaultConfig = {
     title: 'New chart',
     color: '#1976D2',
     type: ChartType.Line
@@ -9,7 +9,7 @@ const defautConfig = {
 
 export const createMockChart = (form?: CreateChartForm): Chart => ({
     id: Math.round(Date.now() * Math.random()),
-    config: form || defautConfig,
+    config: form || defaultConfig,
     dataSet: createDataSet(600)
 });
 

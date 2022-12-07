@@ -6,7 +6,7 @@ const Settings = () => {
         <Box
             sx={{
                 width: '100%',
-                maxWidth: 600,
+                maxWidth: 500,
                 bgcolor: 'background.paper',
                 margin: 'auto'
             }}

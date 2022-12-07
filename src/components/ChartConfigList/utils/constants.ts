@@ -1,13 +1,13 @@
-import { ChartType } from '../../../store/redusers/charts/types';
+import { ChartType } from '../../../store/reducers/charts/types';
 
 export const FORM_ID = 'chart_form';
 
-export const createSetup = {
+export const CREATE_SETUP = {
     title: 'Create chart',
     formId: FORM_ID
 };
 
-export const updateSetup = {
+export const UPDATE_SETUP = {
     title: 'Update chart',
     formId: FORM_ID
 };
