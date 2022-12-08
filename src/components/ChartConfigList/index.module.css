@@ -21,7 +21,7 @@
 }
 
 .colorColumn {
-    width: 15%;
+    width: 20%;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
