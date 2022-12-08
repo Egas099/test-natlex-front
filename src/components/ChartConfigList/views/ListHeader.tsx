@@ -6,7 +6,7 @@ import {
     ListSubheader
 } from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 interface Props {
     onCreate: () => void;
@@ -26,4 +26,4 @@ const ListHeader: FC<Props> = ({ onCreate }) => {
     );
 };
 
-export default ListHeader;
+export default memo(ListHeader);

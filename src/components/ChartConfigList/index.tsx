@@ -39,25 +39,24 @@ const ChartConfigList = () => {
         showDialog();
     }, []);
     const handleCreate = useCallback(
-        (chartForm: CreateChartForm) => dispatch(createChartThunk(chartForm)),
+        (chartForm: CreateChartForm) => {
+            dispatch(createChartThunk(chartForm));
+        },
         [dispatch]
     );
-    const onUpdateClick = useCallback(
-        (updatedConfig: UpdateChartForm) => () => {
-            const { id, ...rest } = updatedConfig;
-            setUpdatedId(id);
-            setPresetFormData(rest);
-            showDialog();
-        },
-        []
-    );
+    const onUpdateClick = useCallback((updatedConfig: UpdateChartForm) => {
+        const { id, ...rest } = updatedConfig;
+        setUpdatedId(id);
+        setPresetFormData(rest);
+        showDialog();
+    }, []);
     const handleUpdate = useCallback(
         (chartForm: CreateChartForm) =>
             dispatch(updateChartThunk({ id: updatedId, ...chartForm })),
         [dispatch, updatedId]
     );
     const onDeleteClick = useCallback(
-        (id: number) => () => dispatch(deleteChartThunk(id)),
+        (id: number) => dispatch(deleteChartThunk(id)),
         [dispatch]
     );
 
@@ -74,8 +73,8 @@ const ChartConfigList = () => {
                         <ConfigListItem
                             key={config.id}
                             {...config}
-                            onUpdate={onUpdateClick(config)}
-                            onDelete={onDeleteClick(config.id)}
+                            onUpdate={onUpdateClick}
+                            onDelete={onDeleteClick}
                         />
                     ))
                 ) : (

@@ -6,7 +6,7 @@ export function usePagination(listLength: number, maxListCount: number) {
     const [page, setPage] = useState(DEFAULT_PAGE);
     const [listRange, setPagRange] = useState<[number, number]>([
         0,
-        maxListCount - 1
+        maxListCount
     ]);
 
     const paginationCount = useMemo(
