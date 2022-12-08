@@ -1,0 +1,10 @@
+#container {
+    box-sizing: border-box;
+    display: block;
+    padding: 5px;
+    background-color: white;
+}
+
+#container > ul {
+    justify-content: center;
+}

@@ -16,7 +16,7 @@ const Filter: FC<Props> = ({ defaultRange: { from, to }, onChange }) => {
             sx={{
                 background: 'white',
                 p: '10px',
-                marginBottom: '20px'
+                mb: '1rem'
             }}
         >
             <DateRangePicker
