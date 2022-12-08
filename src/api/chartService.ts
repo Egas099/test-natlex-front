@@ -13,7 +13,7 @@ function createChart(chartForm: CreateChartForm) {
 function readCharts() {
     return new Promise<Chart[]>(resolve =>
         setTimeout(() => {
-            resolve([
+            const charts = [
                 createMockChart({
                     title: 'Profit',
                     type: ChartType.Line,
@@ -29,7 +29,9 @@ function readCharts() {
                     type: ChartType.Area,
                     color: '#69a0ff'
                 })
-            ]);
+            ];
+            charts.push(...Array.from(new Array(100)).map(createMockChart));
+            resolve(charts);
         }, Math.random() * 1000)
     );
 }
