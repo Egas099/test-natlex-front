@@ -1,5 +1,5 @@
-import { Grid, Stack } from '@mui/material';
-import { useCallback, useEffect, useState } from 'react';
+import { Grid } from '@mui/material';
+import { useEffect } from 'react';
 import { usePagination } from '../../hooks/usePagination';
 import { useTypedDispatch } from '../../hooks/useTypedDispatch';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
@@ -12,18 +12,15 @@ import { EmptyBox } from './views/EmptyBox';
 import Filter from './views/Filter';
 import { LoadingBox } from './views/LoadingBox';
 import PaginationWrapper from '../PaginationWrapper';
+import { useDateRangeFilter } from '../../hooks/useDateRangeFilter';
 
 const ChartList = () => {
     const dispatch = useTypedDispatch();
     const { loading, charts } = useTypedSelector(getChartsOptionsWithId);
-    const [dateRange, setDateRange] = useState(DEFAULT_RANGE);
-
-    const handleFilterChanging = useCallback(
-        (from: number, to: number) => setDateRange({ from, to }),
-        []
-    );
+    const { dateRange, ...filterProps } = useDateRangeFilter(DEFAULT_RANGE);
 
     useEffect(() => {
+        const fetched = false;
         if (loading === ChartStatus.idle) dispatch(fetchChartsThunk());
     }, [loading, dispatch]);
 
@@ -40,10 +37,7 @@ const ChartList = () => {
         <>
             {charts.length ? (
                 <>
-                    <Filter
-                        defaultRange={DEFAULT_RANGE}
-                        onChange={handleFilterChanging}
-                    />
+                    <Filter {...filterProps} />
                     <PaginationWrapper {...paginationProps}>
                         <Grid container spacing={3}>
                             {charts.slice(...listRange).map(chart => (
